@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         Cursor c = db.query("categories", null, null, null, null, null, "name");
         if(c.moveToFirst()){
             do {
-                id = c.getLong(c.getColumnIndex("_id"));
+                long id = c.getLong(c.getColumnIndex("_id"));
                 String name = c.getString(c.getColumnIndex("name"));
                 TextView tv = new TextView(this);
                 tv.setTextSize(25);
@@ -67,10 +67,11 @@ public class MainActivity extends AppCompatActivity {
                 tv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        String n = ((TextView)v).getText().toString();
                         Intent i2 = new Intent(v.getContext(),ProductsActivity.class);
-                        i2.putExtra("cat_id",id);
+                        i2.putExtra("cat_id",Long.parseLong(n.split("\\.")[0]));
                         startActivity(i2);
-                        Log.d("newq",""+id);
+
 
                     }
                 });
