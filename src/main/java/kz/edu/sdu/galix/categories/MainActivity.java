@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         tbl.removeAllViews();
         TableLayout.LayoutParams tbllp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
+        tbllp.bottomMargin = 10;
+        tbllp.leftMargin = 5;
         Cursor c = db.query("categories", null, null, null, null, null, "name");
         if(c.moveToFirst()){
             do {
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 String name = c.getString(c.getColumnIndex("name"));
                 TextView tv = new TextView(this);
                 tv.setTextSize(25);
-                tv.setText(id + ". " + name);
+                tv.setText(id + ". " + name +"    >");
                 tv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+                tv.setTextColor(getResources().getColor(R.color.colorBlack));
+
                 tbl.addView(tv, tbllp);
                 registerForContextMenu(tv);
             }while(c.moveToNext());

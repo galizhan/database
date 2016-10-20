@@ -57,6 +57,8 @@ public class ProductsActivity extends AppCompatActivity {
         tbl.removeAllViews();
         TableLayout.LayoutParams tbllp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
+        tbllp.bottomMargin = 10;
+        tbllp.leftMargin = 5;
         Cursor c = db.rawQuery("select * from products where cat_id=? ",new String[]{cat_id+""});
         if(c.moveToFirst()){
             do {
@@ -65,7 +67,8 @@ public class ProductsActivity extends AppCompatActivity {
                 TextView tv = new TextView(this);
 
                 tv.setTextSize(25);
-                tv.setText(id + ". " + name + " " + cat_id);
+                tv.setText(id + ". " + name  + "    >");
+                tv.setTextColor(getResources().getColor(R.color.colorBlack));
                 tbl.addView(tv, tbllp);
                 registerForContextMenu(tv);
             }while(c.moveToNext());
