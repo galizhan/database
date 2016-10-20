@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 tv.setTextColor(getResources().getColor(R.color.colorBlack));
-
+                tv.setBackgroundColor(getResources().getColor(R.color.colorGray));
                 tbl.addView(tv, tbllp);
                 registerForContextMenu(tv);
             }while(c.moveToNext());

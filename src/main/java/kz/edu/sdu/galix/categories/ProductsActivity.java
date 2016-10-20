@@ -68,6 +68,7 @@ public class ProductsActivity extends AppCompatActivity {
 
                 tv.setTextSize(25);
                 tv.setText(id + ". " + name  + "    >");
+                tv.setBackgroundColor(getResources().getColor(R.color.colorGray));
                 tv.setTextColor(getResources().getColor(R.color.colorBlack));
                 tbl.addView(tv, tbllp);
                 registerForContextMenu(tv);
